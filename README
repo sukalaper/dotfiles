@@ -2,8 +2,11 @@
 ---
 
 
+! info 
+---
 Bebas untuk digunakan dan dimodifikasi ulang, mungkin akan memiliki sedikit memiliki perbedaan. 
 Anda harus melihat dan membaca setiap pengaturan konfigurasi dengan benar jika ingin menerapkan pengaturan percis seperti yang dapat dilihat pada Directory /screenshoot.
+
 
 ! Keterangan
 ---
@@ -15,7 +18,6 @@ Anda harus melihat dan membaca setiap pengaturan konfigurasi dengan benar jika i
 6. Untuk mendapatkan screenshoot seperti milik macOS silahkan gunakan ./awesome-flameshot yang terletak pada Directory /Wallpaper.
 7. Pada directory /bin berisi beberapa jalan pintas yang saya pergunakan, jika itu tidak bekerja dengan baik pada mesin anda, silahkan tinggalkan masalah.
 8. etc.
-
 
 
 ! Kurang Lengkap Rasanya Membuat Dokumentasi Tanpa Rasa Terimakasih. Untuk Itu Terimakasih Banyak Kepada :
