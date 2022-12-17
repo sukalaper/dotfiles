@@ -1,0 +1,36 @@
+! Pengaturan sederhana pada ThinkPad X220
+---
+
+Bebas untuk digunakan dan dimodifikasi ulang, mungkin akan sedikit memiliki perbedaan. Anda harus melihat dan membaca setiap pengaturan konfigurasi dengan benar jika ingin menerapkan pengaturan percis seperti yang dapat dilihat pada Directory /screenshoot.
+
+1. Saya menggunakan GNU/Linux yang berdistribusi Arch Linux
+2. Colorscheme selaras saya menggunakan Pywal milik Dylan Araps, silahkan merujuk pada dokumentasinya
+2. Launcher menggunakan Rofi
+3. Network menggunakan NetworkManager-Dmenu
+4. Untuk mendapatkan screenshoot seperti milik macOS silahkan gunakan ./awesome-flameshot yang terletak pada Directory /Wallpaper.
+5. Pada directory /bin berisi beberapa jalan pintas yang saya pergunakan, jika itu tidak bekerja dengan baik pada mesin anda, silahkan tinggalkan masalah.
+6. Dll.
+---
+
+
+! Tidak lengkap rasanya membuat dokumentasi tanpa rasa terimakasih, untuk itu terimakasih banyak kepada :
+---
+- Dotfiles Indonesia
+- BanditHijo
+- Mnabila
+- Aditya Shakya 1090x
+- Addy Dclxvi
+- ReaseRZ
+- Dylan Araps
+- Berrabe 
+- Sidhant Rathod
+- Harry Kurn
+- Elianiva
+- Mangeshrex
+- Fikri Omar
+- Febrian
+- Raj Shekhar
+- Austine Dcbaer
+- Alok Prakteek
+- DebRnoP
+- Dll.

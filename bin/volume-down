@@ -1,0 +1,9 @@
+#!/bin/bash
+
+style=$(cat $HOME/.config/dunst/sid)
+
+if [[ "$style" == "Light" ]]; then
+	amixer -Mq set Master,0 5%- unmute && notify-send "Volume Down : $(volume)%"
+else
+	amixer -Mq set Master,0 5%- unmute && notify-send "Volume Down : $(volume)%"
+fi

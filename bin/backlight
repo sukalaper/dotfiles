@@ -1,0 +1,6 @@
+#!/bin/bash
+
+BNESS="$(brightnessctl -g)"
+LIGHT=${BNESS%.*}
+
+echo "$LIGHT"

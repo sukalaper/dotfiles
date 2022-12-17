@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "coc-snippets": ">=3.1.2"
+  },
+  "disabled": [],
+  "locked": []
+}

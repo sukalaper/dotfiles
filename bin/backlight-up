@@ -1,0 +1,9 @@
+#!/bin/bash
+
+style=$(cat $HOME/.config/dunst/sid)
+
+if [[ "$style" == "Light" ]]; then
+	brightnessctl s 5%+ && notify-send "Brightness Inc : $(brightnessctl g)%"
+else
+	brightnessctl s 5%+ && notify-send "Brightness Inc : $(brightnessctl g)%"
+fi
