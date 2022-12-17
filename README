@@ -1,19 +1,24 @@
-! Pengaturan sederhana pada ThinkPad X220
----
-
-Bebas untuk digunakan dan dimodifikasi ulang, mungkin akan sedikit memiliki perbedaan. Anda harus melihat dan membaca setiap pengaturan konfigurasi dengan benar jika ingin menerapkan pengaturan percis seperti yang dapat dilihat pada Directory /screenshoot.
-
-1. Saya menggunakan GNU/Linux yang berdistribusi Arch Linux
-2. Colorscheme selaras saya menggunakan Pywal milik Dylan Araps, silahkan merujuk pada dokumentasinya
-2. Launcher menggunakan Rofi
-3. Network menggunakan NetworkManager-Dmenu
-4. Untuk mendapatkan screenshoot seperti milik macOS silahkan gunakan ./awesome-flameshot yang terletak pada Directory /Wallpaper.
-5. Pada directory /bin berisi beberapa jalan pintas yang saya pergunakan, jika itu tidak bekerja dengan baik pada mesin anda, silahkan tinggalkan masalah.
-6. Dll.
+! Pengaturan Sederhana Pada ThinkPad X220
 ---
 
 
-! Tidak lengkap rasanya membuat dokumentasi tanpa rasa terimakasih, untuk itu terimakasih banyak kepada :
+Bebas untuk digunakan dan dimodifikasi ulang, mungkin akan memiliki sedikit memiliki perbedaan. 
+Anda harus melihat dan membaca setiap pengaturan konfigurasi dengan benar jika ingin menerapkan pengaturan percis seperti yang dapat dilihat pada Directory /screenshoot.
+
+! Keterangan
+---
+1. Saya menggunakan GNU/Linux yang berdistribusi Arch Linux.
+2. Colorscheme yang "mungkin" selaras saya menggunakan Pywal milik Dylan Araps, silahkan merujuk pada dokumentasinya.
+3. Font menggunakan Cozette.
+4. Launcher menggunakan Rofi.
+5. Network menggunakan NetworkManager-Dmenu
+6. Untuk mendapatkan screenshoot seperti milik macOS silahkan gunakan ./awesome-flameshot yang terletak pada Directory /Wallpaper.
+7. Pada directory /bin berisi beberapa jalan pintas yang saya pergunakan, jika itu tidak bekerja dengan baik pada mesin anda, silahkan tinggalkan masalah.
+8. etc.
+
+
+
+! Kurang Lengkap Rasanya Membuat Dokumentasi Tanpa Rasa Terimakasih. Untuk Itu Terimakasih Banyak Kepada :
 ---
 - Dotfiles Indonesia
 - BanditHijo
