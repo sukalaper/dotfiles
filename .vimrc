@@ -6,7 +6,6 @@ noh
 syntax on
 "enable number
 set number
-set rnu
 "always show what mode we're currently editing in
 set showmode
 "set show matching parenthesis
@@ -38,40 +37,34 @@ set ma
 set backspace=indent,eol,start
 noremap! <C-BS> <C-w>
 noremap! <C-h> <C-w>
-"---------------------------------------------------
-
 
 "Plugins VIM
 "---------------------------------------------------
 call plug#begin()
-Plug 'preservim/NERDTree'
-Plug 'vim-airline/vim-airline'
-Plug 'sainnhe/sonokai'
-Plug 'junegunn/goyo.vim'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'https://github.com/ap/vim-css-color'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ryanoasis/vim-devicons'
-Plug 'Yggdroot/indentLine'
-Plug 'dylanaraps/wal.vim'
+  Plug 'preservim/NERDTree'
+  Plug 'vim-airline/vim-airline'
+  Plug 'sainnhe/sonokai'
+  Plug 'junegunn/goyo.vim'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'https://github.com/ap/vim-css-color'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'Yggdroot/indentLine'
+  Plug 'mhinz/vim-startify'
 call plug#end()
-"----------------------------------------------------
 
 
 "Colorscheme
 "----------------------------------------------------
 hi Normal guibg=black ctermbg=black
- " Important!!
-        if has('termguicolors')
-          set termguicolors
-        endif
-        " The configuration options should be placed before `colorscheme sonokai`.
-        let g:sonokai_style = 'default'
-        let g:sonokai_better_performance = 1
-        colorscheme sonokai
-"----------------------------------------------------
+if has('termguicolors')
+  set termguicolors
+endif
+let g:sonokai_style = 'default'
+let g:sonokai_better_performance = 1
+colorscheme sonokai
 
 
 "IndentLine
@@ -79,11 +72,10 @@ hi Normal guibg=black ctermbg=black
 "set color indentline
 let g:indentLine_color_term = 239
 "display character lines
-let g:indentLine_char = '|'
-"let g:indentLine_char = ' '
+"let g:indentLine_char = '|'
+let g:indentLine_char = ' '
 "to use the same colors that are used for tab indents
 let g:indentLine_defaultGroup = 'SpecialKey'
-"-----------------------------------------------------
 
 
 "Vim Devicons
@@ -91,7 +83,6 @@ let g:indentLine_defaultGroup = 'SpecialKey'
 "for fix ^[P1$r0 q^[\^[[?12;4$y
 set t_RV=
 set background=dark
-"-----------------------------------------------------
 
 
 "Airline
@@ -106,7 +97,6 @@ let g:airline_highlighting_cache = 1
 let g:airline#extensions#tabline#enabled = 1
 "theme selections
 let g:airline_theme='sonokai'
-"-----------------------------------------------------
 
 
 "NerdTree 
@@ -127,38 +117,33 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 "change focus to right
 nmap <silent> <c-l> :wincmd l<CR>
-"-----------------------------------------------------
 
 
 "Css Color
 "-----------------------------------------------------
 "for show color code
 let g:cssColorVimDoNotMessMyUpdatetime = 1
-"-----------------------------------------------------
 
 
 "Fzf Setup with Ctrl
 "-----------------------------------------------------
 let $FZF_DEFAULT_OPTS ="--bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-f:preview-down,ctrl-b:preview-up --preview 'bat --style=numbers  --color=always --line-range=:500 {}'"
 let g:fzf_action = {
-\ 'ctrl-s': 'split',
-\ 'ctrl-v': 'vsplit'
-\ }
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \ }
 "find file in directory
 silent! nmap <C-p> :Files<CR>
 "find file repo git
 silent! nma <C-g> :Gfiles<CR>
 "find file string/regex
 silent! nmap <C-f> :Rg!
-"-----------------------------------------------------
 
 
 "OmniFunc Autocomplete
 "-----------------------------------------------------
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
-"highlight Pmenu ctermbg=214 gui=bold
-"-----------------------------------------------------
 
 
 "Coc Autocomplete C++
@@ -170,32 +155,32 @@ set nowritebackup
 set cmdheight=2
 set updatetime=300
 set shortmess+=c
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-set signcolumn=number
-else
-set signcolumn=yes
-endif
+  if has("nvim-0.5.0") || has("patch-8.1.1564")
+    set signcolumn=number
+  else
+    set signcolumn=yes
+  endif
 function! CheckBackspace() abort
 let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-if has('nvim')
-inoremap <silent><expr> <c-space> coc#refresh()
-else
-inoremap <silent><expr> <c-@> coc#refresh()
-endif
+  if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+  else
+    inoremap <silent><expr> <c-@> coc#refresh()
+  endif
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
 inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ CheckBackSpace() ? "\<TAB>" :
-      \ coc#refresh()
+  \ coc#pum#visible() ? coc#_select_confirm() :
+  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+  \ CheckBackSpace() ? "\<TAB>" :
+  \ coc#refresh()
 function! CheckBackSpace() abort
 let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-let g:coc_snippet_next = '<tab>'  
+let g:coc_snippet_next = '<tab>'
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
