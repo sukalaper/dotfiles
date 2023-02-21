@@ -10,7 +10,7 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+  TERM: alacritty 
 
 window:
   # Window dimensions (changes require restart)
@@ -109,7 +109,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Cozette
+    family: Iosevka Nerd Font
     # family: Iosevka Term  
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
@@ -181,12 +181,12 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 11
+  size: 6.5
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 0
+    y: 1 
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
@@ -219,11 +219,6 @@ colors:
   primary:
     background: "#000000"
     foreground: "0xe3e1e4"
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0xd6d6d6'
-    cursor: '0x3b4244'
 
   # Normal colors
   normal:
@@ -321,7 +316,14 @@ window.opacity: 1.0
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-style: Beam 
+cursor:
+  style:
+    shape: Block 
+  vi_mode_style:
+    shape: Block 
+  blinking: Always
+  blink_timeout: 0
+  blink_interval: 1
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -562,5 +564,3 @@ key_bindings:
   - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
   - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
   - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
-
-
