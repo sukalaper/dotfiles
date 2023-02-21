@@ -20,7 +20,7 @@ set $alt Mod1
 
 # Set Font
 #-----------------------------------
-font pango:Cozette 9
+font pango: Iosevka Nerd Font 9
 #-----------------------------------
 
 # Use Mouse+$super To Drag Floating Windows 
@@ -33,12 +33,11 @@ exec_always --no-startup-id sh $HOME/.config/polybar/tiny/launch.sh
 #-----------------------------------------------------------------
 exec_always --no-startup-id alacritty -e /home/anggiramadyansyah/.config/autostart/pywal.sh
 #------------------------------------------------------------------
-#exec_always --no-startup-id mplayer /home/anggiramadyansyah/Music/Startup_iMac.wav
-#------------------------------------------------------------------
 exec_always --no-startup-id notify-send "Welcomeback, Sukalaper!"
 #------------------------------------------------------------------
 exec_always --no-startup-id sh /home/anggiramadyansyah/.fehbg
 #------------------------------------------------------------------
+exec_always --no-startup-id picom -b
 
 # Start Rofi (A Program Launcher) With Theme
 #---------------------------------------------------------------------------------
@@ -54,19 +53,17 @@ bindsym $super+n exec sh /home/anggiramadyansyah/.config/rofi/bin/network
 # Screenshoot
 bindsym $super+Shift+s exec sh /home/anggiramadyansyah/.config/rofi/bin/screenshot
 #---------------------------------------------------------------------------------
-
+# Screenshoot With Flameshot
+bindsym Print exec sh /home/anggiramadyansyah/Pictures/awesome-flameshot.sh
 # Bucklespring
 #exec_always --no-startup-id buckle
 #---------------------------------------------------------------------------------
+
 # Exit i3
 #-------------------------------------------------------------------------------------------------------
 bindsym $super+q exec "i3-nagbar -f 'Cozette' -t warning -m 'Really, exit dude?' -b 'Yes' 'i3-msg exit'"
 #-------------------------------------------------------------------------------------------------------
 
-# Screenshoot With Dunst Notification
-#---------------------------------------------------------------------------------------------------------------------------------------------------------
-bindsym Print exec sh /home/anggiramadyansyah/Pictures/awesome-flameshot.sh
-#---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Applications 
 #---------------------------------------------
@@ -132,13 +129,13 @@ bindsym $super+Shift+plus sticky toggle
 
 # Change Focus Window. 
 #------------------------------------------
-bindsym $super+Left focus left
+bindsym $super+h focus left
 #------------------------------------------
-bindsym $super+Down focus down
+bindsym $super+j focus down
 #------------------------------------------
-bindsym $super+Up focus up
+bindsym $super+k focus up
 #------------------------------------------
-bindsym $super+Right focus right
+bindsym $super+l focus right
 #------------------------------------------
 
 # Move Focused Window
@@ -158,7 +155,7 @@ bindsym $super+Shift+Right move right 7 px
 bindsym $super+t layout tabbed
 #--------------------------------------------------
 # Split In Horizontal Orientation
-bindsym $super+h split h
+#bindsym $super+h split h
 # -------------------------------------------------
 # Split In Vertical Orientation
 bindsym $super+v split v
@@ -231,11 +228,6 @@ mode "resize"{
 }
 #------------------------------------------------------
 
-# Window Title Alignment And Border Pixel 
-# This option determines the window title’s text alignment.
-# Default is left
-# Syntax: title_align left|center|right
-#---------------------------------------------------------------------------------------
 #title_align left
 #---------------------------------------------------------------------------------------
 #for_window [class="^.*"] title_format "anggiramadyansyah@sukalaper: ~" border normal 1
@@ -243,12 +235,6 @@ mode "resize"{
 for_window [class=".*"] title_format  "<span background='#ffffff' foreground='#2e3440'>   %instance </span>
 #---------------------------------------------------------------------------------------
 
-# Border
-# Normal = Border + Title
-# Pixel = Only Border
-# None = Without Border
-# For the Normal and Pixel options we can add a value to the thickness of the border such as 0, 1, 2.
-#--------------------------------------
 for_window [class="^.*"] border none 
 #--------------------------------------
 #for_window [class="^.*"] title_format " > %title"
@@ -258,12 +244,6 @@ for_window [class="^.*"] border none
 #default_floating_border normal
 #--------------------------------------
 
-
-# Gaps
-# Syntax: inner|outer
-# Syntax: current|all
-# Syntax: set|plus|minus <px>
-#--------------------------------------------
 gaps inner 6
 #--------------------------------------------
 gaps outer 5
