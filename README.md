@@ -2,6 +2,8 @@
 Before, sorry for my bad english.
 
 > _English is just a languange, not a parameter for measuring your intelligence. So if you don't know English, it's okay. That doesn't undermine your intellectual faculties._
+>
+> — _Just Quotes._
 
 In some time and also due to some factors finally I changed my machine from X220 to T460 and had to adjust some settings like `BAT0`, `Brightness` etc. **I will finish everything asap**.
 
