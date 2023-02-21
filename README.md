@@ -5,7 +5,7 @@ Before, sorry for my bad english.
 >
 > — _Just Quotes._
 
-In some time and also due to some factors finally I changed my machine from X220 to T460 and had to adjust some settings like `BAT0`, `Brightness` etc. **I will finish everything asap**.
+In some time and also due to some factors finally I changed my machine from X220 to T460 and had to adjust some settings like `BAT0`, `Backlight`, `Wireless`, etc. **I will finish everything asap**.
 
 EOL.
 
