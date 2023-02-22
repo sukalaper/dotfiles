@@ -5,7 +5,10 @@ Before, sorry for my bad english.
 >
 > — _Just Quotes._
 
-In some time and also due to some factors finally I changed my machine from X220 to T460 and had to adjust some settings like `BAT0`, `Backlight`, `Wireless`, etc. **I will finish everything asap**.
+In some time and also due to some factors finally I changed my machine from X220 to T460 and had to adjust some settings like `BAT0`, `Backlight`, `Wireless`, `Font`, etc. **I will finish everything asap**.
+
+In this screenshot you will see the font I use is Cozette, I like Bitmap fonts like Cozette but unfortunately it's too small so sometimes I have trouble reading it until I finally went back to using Iosevka.
+
 
 EOL.
 
