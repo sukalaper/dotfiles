@@ -14,6 +14,8 @@ EOL.
 
 
 ## Screenshot 
+### Home (New - Unfinished)
+![Home Preview](https://github.com/sukalaper/dotfiles/blob/master/screenshoot/Home.png?raw=true)
 ### Vim Preview
 ![Vim Preview](https://github.com/sukalaper/dotfiles/blob/master/screenshoot/vim-preview.png?raw=true)
 ### Vim With Dunst
