@@ -17,8 +17,8 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:background:#000000}
-foreground = ${xrdb:foreground:#FAFAFA}
+background = #000000
+foreground = #FAFAFA
 
 [bar/main]
 enable-ipc = true
@@ -39,7 +39,6 @@ font-2=FantasqueSansMono Nerd Font:style=Regular:size=8;2
 modules-left = launcher sp i3 sp xwindow
 modules-center = battery sp pulseaudio sp wlan sp fan sp xkeyboard 
 modules-right = time 
-ray-position = center
 override-redirect = false
 fixed-center = true
 
@@ -63,12 +62,8 @@ label-empty-foreground = ${colors.background}
 [module/i3]
 type = internal/i3
 pin-workspaces = true
-;strip-wsnumbers = true
-;index-sort = true
 enable-click = true
 enable-scroll = true
-;wrapping-scroll = true
-;reverse-scroll = false
 format = <label-state> <label-mode>
 label-mode = %mode%
 label-mode-background = ${colors.background}
