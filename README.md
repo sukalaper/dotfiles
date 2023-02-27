@@ -26,6 +26,3 @@ EOL.
 ![Rofi Powermenu](https://github.com/sukalaper/dotfiles/blob/master/screenshoot/powermenu-preview.png?raw=true)
 ### Rofi With Network
 ![Rofi Network](https://github.com/sukalaper/dotfiles/blob/master/screenshoot/network-preview.png?raw=true)
-### Firefox Startpage
-![Dark](https://github.com/sukalaper/dotfiles/blob/master/firefox-startpage/Pictures/dark.png?raw=true)
-![Light](https://github.com/sukalaper/dotfiles/blob/master/firefox-startpage/Pictures/light.png?raw=true)
