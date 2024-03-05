@@ -1,0 +1,17 @@
+[window]
+  padding = { x = 4, y = 4}
+  dynamic_padding = true
+
+[font]
+  normal = { family = "FantasqueSans M Nerd Font Mono" }
+  bold = { family = "FantasqueSans M Nerd Font Mono" }
+  italic = { family = "FantasqueSans M Nerd Font Mono" }
+  bold_italic = { family = "FantasqueSans M Nerd Font Mono" }
+  size = 7.5
+  offset = { x = 0, y = 0 }
+
+[env]
+  TERM = "alacritty"
+
+[selection]
+  save_to_clipboard = true

@@ -1,0 +1,44 @@
+=== A QUICK NOTE AF ===
+
+=== Copy-Paste File Without Text Block ===
+$ cat "$1" | xclip -selection clipboard
+
+=== Pacman To Txt ===
+$ pacman -Qq > pacman.txt
+
+=== Enter Reading Mode Using Redshift Settings ===
+$ redshift -O 3700
+
+=== View Screen Resolution ===
+$ xdpyinfo | grep dimensions
+
+=== Check Vim Startup Speed ===
+$ vim --startuptime vim_startup.log
+
+=== Search for a Specific Word in a File Within a Directory ===
+$ grep -r "word/you/want/to/search" .
+
+=== Quickly Delete Multiple Files with a Specified Extension ===
+$ find /your/directory -type f -name "*.js" -delete
+
+=== Quickly Tidy Up Indentation (2 spaces) Using Vim ===
+gg=G (At the beginning of the file) // Currently quite helpful with Prettier.
+
+=== Perform Cloning On A Specific Folder ===
+git clone --single-branch --branch=backup --depth=1 https://github.com/sukalaper/dotfiles firefox-startpage // Change with your own folder.
+
+=== Filtering Output Numbers With Grep ===
+$ grep -oP '\d+\.\d+' berkas.txt
+$ awk -F '[^0-9.]+' '/[0-9]+\.[0-9]+/ { print $2 }' berkas.txt
+
+=== Find ===
+$ find /path/to/search -type f -name "filename"
+$ find /home/user/documents -type f -name "example.txt"
+$ find /path/to/search -type d -name "foldername"
+$ find /path/to/search -type f -name "*.extension"
+$ find /home/user/documents -type f -name "*.txt"
+$ find /path/to/search -type f -size +10M
+$ find /path/to/search -type f -mtime -7
+
+=== Ignore Error Message ===
+$ command_name 2>/dev/null

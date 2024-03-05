@@ -1,0 +1,4 @@
+# Check if disable
+# bind -v | grep color
+set colored-completion-prefix on
+set colored-stats on
