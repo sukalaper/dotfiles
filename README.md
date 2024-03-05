@@ -8,6 +8,7 @@ Before, sorry for my bad English.
 >
 > — _Just Quotes._
 
+
 ## Details
 - **Machine** : [ThinkPad X270](https://www.lenovo.com/id/in/laptops/thinkpad/thinkpad-x-series/ThinkPad-X270/p/22TP2TX2700)
   - **OS** : [Arch Linux](https://archlinux.org/)
@@ -32,5 +33,8 @@ Some of these configurations still use the default config from [i3-starterpack](
 | **Global**           | <kbd>$super</kbd> + <kbd>a</kbd>                    | Application List         |
 |                  | <kbd>$super</kbd> + <kbd>p</kbd>                    | Powermenu                |
 |                  | <kbd>PrtSc</kbd>                                    | Screenshot               |
+
+## Preview
+![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/assets/65320033/9961e804-8692-46e6-95a8-db3173e00c1b "This is a Title")
 
 <p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" /></p>
