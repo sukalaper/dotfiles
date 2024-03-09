@@ -77,6 +77,7 @@
     Plug 'Yggdroot/indentLine'
     Plug 'sheerun/vim-polyglot'
     Plug 'junegunn/goyo.vim'
+    Plug 'dylanaraps/wal.vim'
     Plug 'sukalaper/koreksi-bahasa-inggris-pada-markdown-dengan-vim'
   call plug#end()
 
@@ -131,13 +132,8 @@
   nnoremap <silent> <c-h> :wincmd h<CR>
   nnoremap <silent> <c-l> :wincmd l<CR>
 
-" Color definition from https://github.com/sainnhe/sonokai
-  if has('termguicolors')
-    set termguicolors
-  endif
-  let g:sonokai_style = 'atlantis'
-  let g:sonokai_better_performance = 1
-  colorscheme sonokai
+" Color definition 
+  colorscheme wal
 
 " Call dictionary
   source ~/.vim/plugged/koreksi-bahasa-inggris-pada-markdown-dengan-vim/konfigurasi-kamus.vim

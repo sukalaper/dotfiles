@@ -4,7 +4,7 @@
 /* Color-Scheme */
 
 * {
-    BG:    #1d2021;
-    FG:    #ebdbb2;
-    BDR:   #d79921;
+  BG: #100D0C;
+  FG: #C4C7C5;
+  BDR: #7C817A;
 }

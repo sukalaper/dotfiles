@@ -1,11 +1,11 @@
 /* Color-Scheme */
 
 * {
-  BG: #191919;
+  BG: #100D0C;
   BGA: #1D1F21;
   FG: #C4C7C5;
-  BDR: #cc241d;
-  SEL: #C4C7C5;
+  BDR: #7C817A;
+  SEL: #809693;
   UGT: #B08A77;
   IMG: #458588;
   ON: #689d6a;

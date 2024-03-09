@@ -1,4 +1,3 @@
-# Check if disable
-# bind -v | grep color
+# Used to automate completion and also color on <tab> in Bash
 set colored-completion-prefix on
 set colored-stats on

@@ -1,32 +1,30 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
-## Default
-DIR="default"
-STYLE="powermenu"
+# Default
+DIR="kiss/powermenus"
 
 rofi_command="rofi -theme $HOME/.config/rofi/kiss/powermenu.rasi"
-
 uptime=$(uptime -p | sed -e 's/up //g')
 
 # Options
 if [[ "$DIR" == "powermenus" ]]; then
-	shutdown=""
+  shutdown=""
 	reboot=""
 	lock=""
 	suspend=""
 	logout=""
-	ddir="$HOME/.config/rofi/$DIR"
+	#ddir="$HOME/.config/rofi/$DIR"
 else
 	# Buttons
-	layout=`cat $HOME/.config/rofi/$DIR/powermenu.rasi | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
-	if [[ "$layout" == "TRUE" ]]; then
+	layout=`cat $HOME/.config/rofi/kiss/powermenu.rasi | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
+	if [[ "$layout" == "FALSE" ]]; then
 		shutdown=""
 		reboot=""
 		lock=""
 		suspend=""
 		logout=""
 	else
-		shutdown=" Shutdown"
+		shutdown="  Shutdown"
 		reboot=" Restart"
 		lock=" Lock"
 		suspend=" Sleep"
@@ -36,12 +34,12 @@ else
 fi
 
 # Ask for confirmation
-rdialog () {
+rdialog() {
 rofi -dmenu\
-    -i\
-    -no-fixed-num-lines\
-    -p "Are You Sure? : "\
-    -theme "$ddir/confirm.rasi"
+  -i\
+  -no-fixed-num-lines\
+  -p "Are You Sure? : "\
+  -theme "$ddir/confirm.rasi"
 }
 
 # Display Help
@@ -54,50 +52,49 @@ options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
 
 chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
 case $chosen in
-    $shutdown)
-		ans=$(rdialog &)
-		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-			systemctl poweroff
-		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-			exit
-        else
-			show_msg
-        fi
-        ;;
-    $reboot)
-		ans=$(rdialog &)
-		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-			systemctl reboot
-		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-			exit
-        else
-			show_msg
-        fi
-        ;;
-    $lock)
-        betterlockscreen --lock
-        ;;
-    $suspend)
-		ans=$(rdialog &)
-		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-			mpc -q pause
-			amixer set Master mute
-			betterlockscreen --lock blur
-		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-			exit
-        else
-			show_msg
-        fi
-        ;;
-    $logout)
-		ans=$(rdialog &)
-		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-			i3 --exit
-		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-			exit
-        else
-			show_msg
-        fi
-        ;;
+$shutdown)
+  ans=$(rdialog &)
+  if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+    systemctl poweroff
+  elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+    exit
+  else
+    show_msg
+  fi
+  ;;
+$reboot)
+  ans=$(rdialog &)
+  if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+    systemctl reboot
+  elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+    exit
+  else
+    show_msg
+  fi
+  ;;
+$lock)
+  betterlockscreen --lock
+  ;;
+$suspend)
+  ans=$(rdialog &)
+  if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+    mpc -q pause
+    amixer set Master mute
+    betterlockscreen --lock blur
+  elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+    exit
+  else
+    show_msg
+  fi
+  ;;
+$logout)
+  ans=$(rdialog &)
+  if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+    i3 --exit
+  elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+    exit
+  else
+    show_msg
+  fi
+  ;;
 esac
-

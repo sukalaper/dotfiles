@@ -13,5 +13,12 @@
 [env]
   TERM = "alacritty"
 
+[cursor]
+  style = { shape = "Block", blinking = "Always" }
+  blink_interval = 500
+
+[mouse]
+  hide_when_typing = true
+
 [selection]
   save_to_clipboard = true

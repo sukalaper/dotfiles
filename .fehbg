@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/Pictures/image/women-candid.jpg'
+feh --no-fehbg --bg-fill '/home/anggiramadyansyah/women-candid.jpg' 

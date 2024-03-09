@@ -11,39 +11,40 @@
   set $alt Mod1
 
 ## Set Font ##
-  font pango:Iosevka 9
+  font pango:Noto Sans 9
 
 ## Use Mouse+$super To Drag Floating Windows ##
   floating_modifier $super
 
 ## Autostart Program ##
   exec_always --no-startup-id bash ~/.fehbg
-  #exec_always --no-startup-id sh $HOME/.config/polybar/blocks/launch.sh
   exec_always --no-startup-id dunst
   exec_always --no-startup-id xrdb ~/.Xresources
+  #exec_always --no-startup-id xsetroot -bitmap /home/anggiramadyansyah/Pictures/Wallpapers/bw-bgnd/bubbles_orig.xbm -bg "#252a32" -fg "#bab7b5"
   #exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
+  #exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 ## Rofi, Program Launcher ##
-  bindsym $super+a exec $HOME/.config/rofi/bin/launcher
-  bindsym $super+p exec sh $HOME/.config/rofi/bin/powermenu --show-icons 
-  bindsym $super+n exec sh $HOME/.config/rofi/bin/network
-  bindsym $super+Shift+s exec sh $HOME/.config/rofi/bin/screenshot
-  bindsym Print exec sh $HOME/Pictures/awesome-flameshot.bash
+  bindsym $super+a exec ~/.config/rofi/bin/launcher
+  bindsym $super+p exec sh ~/.config/rofi/bin/powermenu 
+  bindsym $super+n exec sh ~/.config/rofi/bin/network
+  bindsym $super+Shift+s exec sh ~/.config/rofi/bin/screenshot
+  bindsym Print exec sh ~/.local/bin/awesome-flameshot
 
 ## Applications ##
   bindsym $super+Shift+f exec firefox 
   bindsym $super+Shift+t exec pcmanfm
   bindsym $super+Shift+Return exec alacritty
-  bindsym --release Caps_Lock exec sh /usr/local/bin/capslock.sh
+  bindsym --release Caps_Lock exec sh ~/.local/bin/capslock.sh
 
 ## Change Volume ##
-  bindsym XF86AudioRaiseVolume exec bash /usr/local/bin/volume-up
-  bindsym XF86AudioLowerVolume exec bash /usr/local/bin/volume-down
+  bindsym XF86AudioRaiseVolume exec ~/.local/bin/volume-up
+  bindsym XF86AudioLowerVolume exec ~/.local/bin/volume-down
   bindsym XF86AudioMute exec amixer set Master toggle
 
 ## Brightness Control ##
-  bindsym XF86MonBrightnessUp exec bash /usr/local/bin/backlight-up
-  bindsym XF86MonBrightnessDown exec bash /usr/local/bin/backlight-down
+  bindsym XF86MonBrightnessUp exec ~/.local/bin/backlight-up
+  bindsym XF86MonBrightnessDown exec ~/.local/bin/backlight-down
 
 ## i3 Window Management ##
   # Exit i3 #
@@ -113,15 +114,15 @@
   # Enable Border And Title #
   for_window [class="^.*"] border pixel 0
   # Window Titles With CSS #
-  #for_window [class=".*"] title_format "<span background='#252A32' foreground='#BAB7B5'>  %instance </span>" border normal 5
+  #for_window [class=".*"] title_format "<span background='#252A32' foreground='#BAB7B5'>  %instance </span>" border normal 3
   # Set Gaps On Window #
-  gaps inner 1
+  gaps inner 6 
   # Set Gaps On Workspace #
   gaps outer 8 
   # Automatic Gaps #
   smart_gaps on
 
-## Window Class                   border   |  backgrd   |   text    |   indicator ##
-  client.focused                   #252A32    #BAB7B5       #252A32      # 
-  client.focused_inactive          #252A32    #BAB7B5       #BAB7B5      #
+## Window Class                       border   |  backgrd   |   text    |   indicator ##
+  client.focused                   #252A32    #BAB7B5       #252A32      #BAB7B5 
+  client.focused_inactive          #252A32    #BAB7B5       #BAB7B5      #BAB7B5
   client.unfocused                 #252A32    #BAB7B5       #BAB7B5      #BAB7B5
