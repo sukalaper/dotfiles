@@ -97,7 +97,7 @@ Oh no no! It looks like we're out of the documentation, let's move on~
 
 ## Installation
 
-I personally only use [TTY](https://itsfoss.com/what-is-tty-in-linux/) to execute `startx`. Some configuration scripts are in `/usr/local/bin` you can configure those later. Fonts can be found in `/usr/share/fonts` and several other settings can also be found in files starting with a dot (`.`).
+I personally only use [TTY](https://itsfoss.com/what-is-tty-in-linux/) to execute `startx`. Some configuration scripts are in `~/.local/bin` you can configure those later. Fonts can be found in `~/.local/share/fonts` and several other settings can also be found in files starting with a dot (`.`).
 
 I assume you have successfully installed Arch and are currently on another [Desktop Environment](https://en.wikipedia.org/wiki/Desktop_environment) / [Window Manager](https://wiki.archlinux.org/title/window_manager). We need several packages here, because I use Arch which means everything is under [pacman](https://wiki.archlinux.org/title/pacman). Oh, don't forget [AUR](https://aur.archlinux.org/)! Do it all in one command.
 
