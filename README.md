@@ -112,36 +112,69 @@ Then.. what about the workspace? As in general, I don't stick to a few rules.
 It's universal, I can open [WPS](https://wiki.archlinux.org/title/WPS_Office) on workspace 1 and terminal on workspace 4 (for example), sure. This is as random and free as possible configuration that I have. I previously used [polybar](https://github.com/polybar/polybar) as the bar. However, for several reasons, I want to take advantage of [i3wm scratchpad feature](https://i3wm.org/docs/userguide.html#_scratchpad) to use the bar with the Bash script I write (`stat-bar.sh`). 
 
 ```bash
-#!/bin/bash
+#!/bin/bash -e
 
-# Battery percentage information
-  bat_stat1=$(cat /sys/class/power_supply/BAT0/capacity)
-  bat_stat2=$(cat /sys/class/power_supply/BAT1/capacity)
+# The MIT License (MIT)
+# https://opensource.org/license/mit
+# Copyright (c) 2024 Sukalaper
+#
+# Reference: 
+# https://github.com/dylanaraps/pure-bash-bible
+# https://www.nerdfonts.com/cheat-sheet
+
+# Make your own status bar
+  echo "An itsy bitsy status bar~"
+  echo "-------------------------"
+  
+# Battery
+  # Get value from /sys/class/power_supply/capacity
+  bat1=$(cat /sys/class/power_supply/BAT0/capacity)
+  bat2=$(cat /sys/class/power_supply/BAT1/capacity)
+  # Print output 
+  [[ -n $bat1 && -n $bat2 ]] && { echo  : $bat1; echo  : $bat2; } || echo Something wrong..
+
+# AC Status
+  # Get value from /sys/class/power_supply/AC/online
+  # If the value is 1, it is filled in and vice versa
+  charger_status=$(cat /sys/class/power_supply/AC/online)
+  # Print output
+  [[ $charger_status -eq 1 ]] && { echo 󰚥 : Charging; } || echo 󰚦 : Discharging
 
 # Date
+  # Get value from $date 
   date_now=$(date)
+  # Print output
+  [[ -n $date_now ]] && { echo  : $date_now; } || echo  : $date_now not found
+
+# Volume 
+  # Get value from amixer
+  vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
+  [[ -n $vol ]] && { echo 󰕾 : $vol; } || echo 󰕾 : not found
 
 # Network
-  wifi_stat=$(nmcli connection show --active | awk '/wifi/ {print $1}')
+  # Get value from nmcli and trim the name
+  # So the first 1-3 sentences are used
+  wifi_stat=$(nmcli connection show --active | awk '/wifi/ {printf "%s %s %s\n", $1, $2, $3}')
+  # Print output
+  [[ -n $wifi_stat ]] && { echo  : $wifi_stat; } ||  echo  : not found!
 
 # Uptime
-  time_active=$(uptime | awk -F 'up' '{print $2}' | awk -F ',' '{print $1}' | sed 's/^[ \t]*//')
+  # Get value from $uptime and trim the output 
+  # Until only hours:minutes are displayed
+  time_active=$(uptime | awk -F 'up' '{print $2}' | awk -F ',' '{print $1}' | sed 's/^[ \\t]*//')
+  # Print output
+  [[ -n $time_active ]] && { echo  : $time_active; } || echo  : -
 
-## Sensors
-# Fan
-  temp_fan=$(sensors | grep -i "fan" | sort -nk2 | tail -n1 | awk '{print $2}')
-# Temp
-  temp_temp=$(sensors | grep -i "temp1" | tail -n1 | awk '{print $2}')
-  #temp_fan_stat=$((sensors | grep -i "fan" && sensors | grep -Ei 'temp1' | sort -nk2 | tail -n1) | awk '{print $2}')
-
-# Show program
-  echo " : $bat_stat1%"
-  echo " : $bat_stat2%"
-  echo " : $date_now"
-  echo " : $wifi_stat"
-  echo " : $time_active"
-  echo "󰈐 : $temp_fan RPM"
-  echo "󰔄 : $temp_temp"
+# Sensors
+# Show fan speed
+  # Get value fan from $sensors and trim the output
+  temp_fan=$(sensors | grep -i "fan" | awk '{print $2}')
+  # Print output
+  [[ -n $temp_fan ]] && { echo 󰈐 : $temp_fan RPM; } || echo 󰈐 : -
+# Show temperature
+  # Get value temp from $sensors and trim the output
+  temp_now=$(sensors | grep -i "temp1" | tail -n1 | awk '{print $2}')
+  [[ -n $temp_now ]] && { echo 󰔄 : $temp_now; } || echo 󰔄 : -
   ```
 
 This is a simple example, you can expand it further! If you want to change and configure, you can find some amazing icons [here](https://www.nerdfonts.com/cheat-sheet).
