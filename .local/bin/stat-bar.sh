@@ -1,54 +1,63 @@
-#!/bin/bash
-#
+#!/bin/bash -e
+
 # The MIT License (MIT)
-#
+# https://opensource.org/license/mit
 # Copyright (c) 2024 Sukalaper
 #
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+# Reference: 
+# https://github.com/dylanaraps/pure-bash-bible
+# https://www.nerdfonts.com/cheat-sheet
 
-## Refresh command options:
-# -n 5: refresh after 5 seconds
-# -t : no title
-# -d : highlight changes between updates
-  watch '-n 5' '-t' '-d' "
+# Make your own status bar
+  echo "An itsy bitsy status bar~"
+  echo "-------------------------"
+  
+# Battery
+  # Get value from /sys/class/power_supply/capacity
+  bat1=$(cat /sys/class/power_supply/BAT0/capacity)
+  bat2=$(cat /sys/class/power_supply/BAT1/capacity)
+  # Print output 
+  [[ -n $bat1 && -n $bat2 ]] && { echo  : $bat1; echo  : $bat2; } || echo Something wrong..
 
-## Battery information
-# Show battery percentage 
-  bat_stat1=\$(cat /sys/class/power_supply/BAT0/capacity)
-  bat_stat2=\$(cat /sys/class/power_supply/BAT1/capacity)
-# Show charging status
-  charger_status=\$(cat /sys/class/power_supply/AC/online)
+# AC Status
+  # Get value from /sys/class/power_supply/AC/online
+  # If the value is 1, it is filled in and vice versa
+  charger_status=$(cat /sys/class/power_supply/AC/online)
+  # Print output
+  [[ $charger_status -eq 1 ]] && { echo 󰚥 : Charging; } || echo 󰚦 : Discharging
 
-# Show date
-  date_now=\$(date)
+# Date
+  # Get value from $date 
+  date_now=$(date)
+  # Print output
+  [[ -n $date_now ]] && { echo  : $date_now; } || echo  : $date_now not found
 
-# Show network
-  wifi_stat=\$(nmcli connection show --active | awk '/wifi/ {printf \"%s %s %s\\n\", \$1, \$2, \$3}')
+# Volume 
+  # Get value from amixer
+  vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
+  [[ -n $vol ]] && { echo 󰕾 : $vol; } || echo 󰕾 : not found
 
-# Show uptime
-  time_active=\$(uptime | awk -F 'up' '{print \$2}' | awk -F ',' '{print \$1}' | sed 's/^[ \\t]*//')
+# Network
+  # Get value from nmcli and trim the name
+  # So the first 1-3 sentences are used
+  wifi_stat=$(nmcli connection show --active | awk '/wifi/ {printf "%s %s %s\n", $1, $2, $3}')
+  # Print output
+  [[ -n $wifi_stat ]] && { echo  : $wifi_stat; } ||  echo  : not found!
 
-## Sensors information
-# Show fan
-  temp_fan=\$(sensors | grep -i \"fan\" | sort -nk2 | tail -n1 | awk '{print \$2}')
-# Show temp
-  temp_temp=\$(sensors | grep -i \"temp1\" | tail -n1 | awk '{print \$2}')
+# Uptime
+  # Get value from $uptime and trim the output 
+  # Until only hours:minutes are displayed
+  time_active=$(uptime | awk -F 'up' '{print $2}' | awk -F ',' '{print $1}' | sed 's/^[ \\t]*//')
+  # Print output
+  [[ -n $time_active ]] && { echo  : $time_active; } || echo  : -
 
-# Show program output
-  if [ \"\$charger_status\" -eq 1 ]; then
-    echo \"󰚥 : Charging\"
-  else
-    echo \"󰚦 : Discharging\"
-  fi
-  echo \" : \$bat_stat1%\"
-  echo \" : \$bat_stat2%\"
-  echo \" : \$date_now\"
-  echo \" : \$wifi_stat\"
-  echo \" : \$time_active\"
-  echo \"󰈐 : \$temp_fan RPM\"
-  echo \"󰔄 : \$temp_temp\"
-"
+# Sensors
+# Show fan speed
+  # Get value fan from $sensors and trim the output
+  temp_fan=$(sensors | grep -i "fan" | awk '{print $2}')
+  # Print output
+  [[ -n $temp_fan ]] && { echo 󰈐 : $temp_fan RPM; } || echo 󰈐 : -
+# Show temperature
+  # Get value temp from $sensors and trim the output
+  temp_now=$(sensors | grep -i "temp1" | tail -n1 | awk '{print $2}')
+  [[ -n $temp_now ]] && { echo 󰔄 : $temp_now; } || echo 󰔄 : -
