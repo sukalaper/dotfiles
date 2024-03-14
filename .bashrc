@@ -25,11 +25,21 @@
 # Completion Case-Insensitive in Bash
   bind 'set completion-ignore-case on'
 
+# Auto correct 
+  shopt -s cdspell
+
 # Some Alias
   alias ls='exa --icons=always'
   alias pcs='sudo pacman -S'
   alias pcsyu='sudo pacman -Syu'
   alias remove='sudo pacman -Rncs'
   alias compile='time g++'
+  alias wtc='watch -n 5 -t -d ~/.local/bin/stat-bar.sh'
   alias lampp='if ! sudo /opt/lampp/lampp status | grep "already running"; then sudo /opt/lampp/lampp start; fi'
   alias lamppstop='if ! sudo /opt/lampp/lampp status | grep "already running"; then sudo /opt/lampp/lampp stop; fi'
+  alias copas='xclip -selection clipboard'
+  alias rel='source .bashrc'
+
+# Easy manage ~/.config 
+  CDPATH=$CDPATH:~/.config
+  export CDPATH
