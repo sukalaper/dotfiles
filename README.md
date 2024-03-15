@@ -149,6 +149,7 @@ It's universal, I can open [WPS](https://wiki.archlinux.org/title/WPS_Office) on
 # Volume 
   # Get value from amixer
   vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
+  # Print output
   [[ -n $vol ]] && { echo 󰕾 : $vol; } || echo 󰕾 : not found
 
 # Network
@@ -174,7 +175,6 @@ It's universal, I can open [WPS](https://wiki.archlinux.org/title/WPS_Office) on
 # Show temperature
   # Get value temp from $sensors and trim the output
   temp_now=$(sensors | grep -i "temp1" | tail -n1 | awk '{print $2}')
+  # Print output
   [[ -n $temp_now ]] && { echo 󰔄 : $temp_now; } || echo 󰔄 : -
   ```
-
-This is a simple example, you can expand it further! If you want to change and configure, you can find some amazing icons [here](https://www.nerdfonts.com/cheat-sheet).
