@@ -39,6 +39,8 @@
   alias lamppstop='if ! sudo /opt/lampp/lampp status | grep "already running"; then sudo /opt/lampp/lampp stop; fi'
   alias copas='xclip -selection clipboard'
   alias rel='source .bashrc'
+  alias gl='git clone'
+  alias c='clear'
 
 # Easy manage ~/.config 
   CDPATH=$CDPATH:~/.config

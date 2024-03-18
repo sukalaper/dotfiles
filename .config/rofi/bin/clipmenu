@@ -1,0 +1,10 @@
+#!/bin/sh
+
+DIR="default"
+STYLE="clipmenu"
+
+rofi \
+  -dmenu -i \
+  -theme "$HOME"/.config/rofi/kiss/clipmenu.rasi
+
+#rofi -dmenu -i -p "Clipmenu" -lines 5 -width 100 -padding 800

@@ -70,8 +70,8 @@
   call plug#begin()
     Plug 'sainnhe/sonokai' 
     Plug 'preservim/NERDTree'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'vim-airline/vim-airline'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ryanoasis/vim-devicons'
     Plug 'Yggdroot/indentLine'

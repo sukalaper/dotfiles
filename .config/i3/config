@@ -1,11 +1,3 @@
-#################################################################################
-# I put two hash marks on the title.
-# ## Set Font ##
-#
-# Programs marked with one hash mark are programs that I disable (sometimes).
-# #exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
-#################################################################################
-
 ## Set Modifier ##
   set $super Mod4
   set $alt Mod1
@@ -20,6 +12,7 @@
   exec_always --no-startup-id bash ~/.fehbg
   exec_always --no-startup-id dunst
   exec_always --no-startup-id xrdb ~/.Xresources
+  exec_always --no-startup-id clipmenud
   #exec_always --no-startup-id xsetroot -bitmap /home/anggiramadyansyah/Pictures/Wallpapers/bw-bgnd/bubbles_orig.xbm -bg "#252a32" -fg "#bab7b5"
   #exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
   #exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -32,9 +25,11 @@
   bindsym Print exec sh ~/.local/bin/awesome-flameshot
 
 ## Applications ##
+  bindsym $super+c exec --no-startup-id clipmenu
+  bindsym $super+Shift+x exec --no-startup-id clipdel -d '.'
   bindsym $super+Shift+f exec firefox 
   bindsym $super+Shift+t exec pcmanfm
-  bindsym $super+Shift+Return exec alacritty
+  bindsym $super+Shift+Return exec st
   bindsym --release Caps_Lock exec sh ~/.local/bin/capslock.sh
 
 ## Change Volume ##
@@ -122,7 +117,7 @@
   # Automatic Gaps #
   smart_gaps on
 
-## Window Class                       border   |  backgrd   |   text    |   indicator ##
+## Window Class                    border   |  backgrd   |   text    |   indicator ##
   client.focused                   #252A32    #BAB7B5       #252A32      #BAB7B5 
   client.focused_inactive          #252A32    #BAB7B5       #BAB7B5      #BAB7B5
   client.unfocused                 #252A32    #BAB7B5       #BAB7B5      #BAB7B5

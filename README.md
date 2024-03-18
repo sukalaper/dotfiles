@@ -17,16 +17,6 @@ I've only been studying Linux for a few decades, I'm not an IT guy, developer or
 
 ![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/blob/main/Pictures/preview/home-1.png)
 
-![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/blob/main/Pictures/preview/home-fullscreen.png)
-
-![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/blob/main/Pictures/preview/home-rofi-app.png)
-
-![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/blob/main/Pictures/preview/home-rofi-network.png)
-
-![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/blob/main/Pictures/preview/home-rofi-powermenu.png)
-
-![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/blob/main/Pictures/preview/home-floating.png)
-
 
 ## Details
 

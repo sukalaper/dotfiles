@@ -1,7 +1,6 @@
 #!/bin/bash
-set -o pipefail
 
-# =============================================
+set -o pipefail
 
 _SCREENSHOT_DIR_=$HOME/Pictures
 _LOG_FILE_="$_SCREENSHOT_DIR_/.awesome-flameshot.log"
@@ -20,10 +19,8 @@ _AUTHOR_NAME_="  $USER  $(date '+    %d.%m.%y     %H:%M')"
 _AUTHOR_COLOR_='#000000'
 
 # Get Lists Font With "convert -list font | grep -iE 'font:.*' | nl"
-_FONT_SIZE_=9
-_FONT_='Iosevka-Nerd-Font-Complete'
-
-# =============================================
+_FONT_SIZE_=10
+_FONT_='FantasqueSansM-Nerd-Font-Regular'
 
 # List of Colors
 Light_Red="\033[1;31m"
@@ -71,19 +68,16 @@ function convert() {
             -format 'roundrectangle 1,1 %[fx:w+4],%[fx:h+4] '"$_ROUNDED_CORNER_"','"$_ROUNDED_CORNER_"''\
             info: > $_SCREENSHOT_DIR_/_rounded_.mvg
         check
-
         printf "%-50s" "**|--[+]*Generate*Rounded*Masking*" | sed 's/ /./g' | sed 's/*/ /g'
         magick convert "$_LATEST_IMAGE_" -border $_BORDER_SIZE_ -alpha transparent \
             -background none -fill white -stroke none -strokewidth 0 \
             -draw "@"$_SCREENSHOT_DIR_"/_rounded_.mvg" $_SCREENSHOT_DIR_/_rounded_mask_.png >> $_LOG_FILE_ 2>&1
         check
-
         printf "%-50s" "**|--[+]*Generate*Rounded*Overlay*" | sed 's/ /./g' | sed 's/*/ /g'
         magick convert "$_LATEST_IMAGE_" -border $_BORDER_SIZE_ -alpha transparent \
             -background none -fill none -stroke $_FG_COLOR_ -strokewidth $_BORDER_SIZE_ \
             -draw "@"$_SCREENSHOT_DIR_"/_rounded_.mvg" $_SCREENSHOT_DIR_/_rounded_overlay_.png >> $_LOG_FILE_ 2>&1
         check
-
         printf "%-50s" "**|--[+]*Set*Rounded*Corner*&*Border*Color*" | sed 's/ /./g' | sed 's/*/ /g'
         magick convert "$_LATEST_IMAGE_" -alpha set -bordercolor none -border $_BORDER_SIZE_  \
             $_SCREENSHOT_DIR_/_rounded_mask_.png -compose DstIn -composite \
@@ -99,21 +93,17 @@ function convert() {
         \) -alpha off -compose CopyOpacity -composite -compose over "$_target_file_" >> $_LOG_FILE_ 2>&1
         check
     fi
-
     printf "%-50s" "**|--[+]*Set*Image*Shadow*" | sed 's/ /./g' | sed 's/*/ /g'
     magick convert "$_target_file_" \( +clone -background black -shadow $_SHADOW_SIZE_ \) +swap -background none -layers merge +repage "$_target_file_" >> $_LOG_FILE_ 2>&1 \
     && magick convert "$_target_file_" -bordercolor $_BG_COLOR_ -border $_BG_SIZE_ "$_target_file_" >> $_LOG_FILE_ 2>&1
     check
-
     printf "%-50s" "**|--[+]*Set*Image*Author*" | sed 's/ /./g' | sed 's/*/ /g'
     echo -en "  $_AUTHOR_NAME_  " | magick convert "$_target_file_" -gravity ${_AUTHOR_POST_[0]} -pointsize $_FONT_SIZE_ -fill $_AUTHOR_COLOR_ -undercolor $_FG_COLOR_ -font $_FONT_ -annotate ${_AUTHOR_POST_[1]} @- "$_target_file_" \
     >> $_LOG_FILE_ 2>&1 && magick convert "$_target_file_" -gravity South -chop 0x$(( $_BG_SIZE_ / 2 )) "$_target_file_" >> $_LOG_FILE_ 2>&1
     check
-
     printf "%-50s" "**|--[+]*Add*Top*/*North*BG*" | sed 's/ /./g' | sed 's/*/ /g'
     magick convert "$_target_file_" -gravity North -background $_BG_COLOR_ -splice 0x$(( $_BG_SIZE_ / 2 )) "$_target_file_" >> $_LOG_FILE_ 2>&1
     check
-
     printf "%-50s" "**|--[+]*Set*sRGB*Image*Profile*" | sed 's/ /./g' | sed 's/*/ /g'
     magick convert "$_target_file_" -profile /usr/share/color/icc/colord/sRGB.icc "$_target_file_" >> $_LOG_FILE_ 2>&1
     check
@@ -123,12 +113,9 @@ function summary() {
 
     _runtime_job_=$(($2-$1))
     hours=$((_runtime_job_ / 3600)); minutes=$(( (_runtime_job_ % 3600) / 60 )); seconds=$(( (_runtime_job_ % 3600) % 60 ))
-
     printf "%s %s\n" "  |--[+] Elapsed Time : " "$hours : $minutes : $seconds"
-
     if [[ $3 != "failed" ]]; then
         printf "%s %s" "  |--[+] Output File  : " "$_target_file_"
-
         xclip -selection clipboard -t image/png -i $_target_file_ >> $_LOG_FILE_ 2>&1 && notify-send -u normal -t 3000 "Awesome-Flameshot: $_target_file_ Copied" >> $_LOG_FILE_ 2>&1
         if [[ $? -eq 0 ]]; then
             echo -e "${Light_Green} (Copied to Clipboard) ${NoColor}"
@@ -136,7 +123,6 @@ function summary() {
             echo -e "${Light_Red} (Copy to Clipboard Failed) ${NoColor}"
         fi
     fi
-
     _error_count_=$(cat $_LOG_FILE_ 2> /dev/null | wc -l)
     if [[ $_error_count_ -ge 1 ]]; then
         printf "%s ${Light_Red}%s  -->  $_LOG_FILE_ ${NoColor}\n\n" "  |--[+] Error Count  : " $_error_count_
@@ -151,19 +137,15 @@ function main() {
     rm -f $_LOG_FILE_
     _start_job_=$(date +%s)
     echo -e "\n\n${Light_Cyan} [+] SCRENSHOTING ${NoColor}"
-
     printf "%-50s" "**|--[+]*Starting*Flameshot*" | sed 's/ /./g' | sed 's/*/ /g'
     # check flameshot version, if v0.x.x (legacy) then enable --raw option
     grep -qiE 'v0\.[0-9\.]+' <(flameshot --version 2>&1) && varFlameshotOption="--raw" || varFlameshotOption=""
     flameshot gui $varFlameshotOption --delay 1000 > /dev/null 2>&1
     check
-
     printf "%-50s" "**|--[+]*Checking*Latest*Image*" | sed 's/ /./g' | sed 's/*/ /g'
     get_latest_img
-
     echo -e "\n\n${Light_Cyan} [+] CONVERTING ${NoColor}"
     convert
-
     echo -e "\n\n${Light_Cyan} [+] SUMMARY ${NoColor}"
     _end_job_=$(date +%s)
     summary $_start_job_ $_end_job_

@@ -37,12 +37,24 @@
   vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
   [[ -n $vol ]] && { echo 󰕾 : $vol; } || echo 󰕾 : not found
 
+# Brightness
+  # Get value from brightnessctl
+  bright_disp=$(brightnessctl i | grep -E -o '[0-9]{1,3}%')
+  # Print output
+  [[ -n $bright_disp ]] && { echo 󰃠 : $bright_disp; } || echo 󰃠 : not found
+
 # Network
   # Get value from nmcli and trim the name
   # So the first 1-3 sentences are used
-  wifi_stat=$(nmcli connection show --active | awk '/wifi/ {printf "%s %s %s\n", $1, $2, $3}')
+  wifi_stat=$(nmcli connection show --active | awk '/wifi/ {print $1,$2,$3}' | cut -d ' ' -f 1-3)
   # Print output
   [[ -n $wifi_stat ]] && { echo  : $wifi_stat; } ||  echo  : not found!
+
+# Memory usage
+  # Get value from ps_mem
+  mem_usage=$(sudo ps_mem | tail -n 2 | sed 's/ //g' |  sed '/^=*$/d')
+  # Print output
+  [[ -n $mem_usage ]] && { echo 󰍛 : $mem_usage; } || echo 󰍛 : not found!
 
 # Uptime
   # Get value from $uptime and trim the output 
