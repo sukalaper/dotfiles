@@ -72,4 +72,5 @@
 # Show temperature
   # Get value temp from $sensors and trim the output
   temp_now=$(sensors | grep -i "temp1" | tail -n1 | awk '{print $2}')
+  # Print output
   [[ -n $temp_now ]] && { echo 󰔄 : $temp_now; } || echo 󰔄 : -
