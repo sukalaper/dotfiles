@@ -1,8 +1,4 @@
-
-<h2 align="center">
-No Place Like $HOME
-</h2><br>
-
+# No Place Like `$HOME`
 
 ## Disclaimer 
 
@@ -10,12 +6,14 @@ Before, sorry for my bad English.
 
 > _English is just a languange, not a parameter for measuring your intelligence. So if you don't know English, it's okay. That doesn't undermine your intellectual faculties._
 
-I've only been studying Linux for a few decades, I'm not an IT guy, developer or anything. So, if I have a mistake please correct it and not turn around to insult me.
-
+I've only been studying Linux for a few decades. I'm not an IT guy, developer, or anything like that. So, if I make a mistake, please correct it without insulting me.
 
 ## Preview
 
-![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/blob/main/Pictures/preview/home-1.png)
+![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/blob/main/Pictures/preview/home.png)
+
+![2024-03-05-070408_1920x1080_scrot](https://github.com/sukalaper/dotfiles/blob/main/Pictures/preview/home-2.png)
+
 
 
 ## Details
@@ -24,7 +22,7 @@ I've only been studying Linux for a few decades, I'm not an IT guy, developer or
   - OS : [Arch Linux](https://archlinux.org/)
   - Window Manager : [i3wm](https://i3wm.org/)
   - Font : [Fantasque Sans Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FantasqueSansMono.zip)
-  - Terminal : [Alacritty](https://github.com/alacritty)
+  - Terminal : [St](https://st.suckless.org/)
   - Shell : [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
   - App Launcher : [Rofi](https://github.com/davatorium/rofi)
   - Notification : [Dunst](https://github.com/dunst-project/dunst)
@@ -35,7 +33,7 @@ I've only been studying Linux for a few decades, I'm not an IT guy, developer or
 
 ## Keyboard Mapping
 
-Some are for basic knowledge.
+Some of the resources are intended for basic understanding.
 
 | Set              | Key                                                     |  Exec                    |
 |------------------|---------------------------------------------------------|--------------------------|
@@ -52,23 +50,22 @@ Some are for basic knowledge.
 
 ## Introduction
 
-Before that, allow me to make small talk first.
+Before we begin, may I engage in some small talk first?
 
-I used GNU/Linux more or less decades ago with [Linux Mint](https://linuxmint.com/), it was great! Gives me the impression that it's not too stiff when switching from Windows. I started to see some interesting views from some of the [friends here](https://t.me/s/dotfiles_id_channel?before=169). I decided to use [i3wm](https://i3wm.org/) on Linux Mint before migrating everything to Arch Linux.
+I used GNU/Linux more or less decades ago with [Linux Mint](https://linuxmint.com/), and it was great! It gave me the impression that transitioning from Windows wasn't too difficult. I began to explore some interesting perspectives from [friends here](https://t.me/s/dotfiles_id_channel?before=169). Eventually, I decided to use [i3wm](https://i3wm.org/) on Linux Mint before migrating everything to Arch Linux.
+Of course, everything seems stiff and heavy at first. However, we should open ourselves to new experiences. Instead of always being closed-minded and conservative, let's be open to possibilities.
 
-Of course, everything seems stiff and heavy at first. However, we must open the door to potential experiences better. Not always closed and acting conservative but open on possibility.
-
-Some very good guidelines (my version of course) for learning are.
+Here are some very good guidelines (my version, of course) for learning.
 
 1. https://bandithijo.dev/blog/i3wm-window-manager-yang-taktis-namun-praktis
 
 2. https://github.com/addy-dclxvi/i3-starterpack
 
-i3 is my first wm and I absolutely love it! Especially the tabbed and stacking features. This can be used immediately when you first install i3wm in full and without the need for any configuration, i promise.
+i3 is my first window manager, and I absolutely love it! Especially the tabbed and stacking features. These features can be used immediately upon installing i3wm in its entirety, without the need for any configuration, I promise.
 
-Actually, I used the enclosure to boot the SSD with Arch inside. Considering that the X270 has M.2 built in, I just wanted to let Windows 11 rest in peace without disturbing it. Until finally, problems came and I was forced to use dual boot on it.
+Actually, I utilized an enclosure to boot the SSD with Arch inside. Considering that the X270 has a built-in M.2, I simply wanted to let Windows 11 rest in peace without disturbing it. However, eventually, problems arose, and I was forced to set up a dual boot system.
 
-Approximately, this is what my partition looks like now.
+This is roughly what my partition looks like now.
 ```
 NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 sda 8:0 0 119.2G 0 disk
@@ -99,72 +96,4 @@ Cool, you're ready now!
 
 Then.. what about the workspace? As in general, I don't stick to a few rules.
 
-It's universal, I can open [WPS](https://wiki.archlinux.org/title/WPS_Office) on workspace 1 and terminal on workspace 4 (for example), sure. This is as random and free as possible configuration that I have. I previously used [polybar](https://github.com/polybar/polybar) as the bar. However, for several reasons, I want to take advantage of [i3wm scratchpad feature](https://i3wm.org/docs/userguide.html#_scratchpad) to use the bar with the Bash script I write (`stat-bar.sh`). 
-
-```bash
-#!/bin/bash -e
-
-# The MIT License (MIT)
-# https://opensource.org/license/mit
-# Copyright (c) 2024 Sukalaper
-#
-# Reference: 
-# https://github.com/dylanaraps/pure-bash-bible
-# https://www.nerdfonts.com/cheat-sheet
-
-# Make your own status bar
-  echo "An itsy bitsy status bar~"
-  echo "-------------------------"
-  
-# Battery
-  # Get value from /sys/class/power_supply/capacity
-  bat1=$(cat /sys/class/power_supply/BAT0/capacity)
-  bat2=$(cat /sys/class/power_supply/BAT1/capacity)
-  # Print output 
-  [[ -n $bat1 && -n $bat2 ]] && { echo  : $bat1; echo  : $bat2; } || echo Something wrong..
-
-# AC Status
-  # Get value from /sys/class/power_supply/AC/online
-  # If the value is 1, it is filled in and vice versa
-  charger_status=$(cat /sys/class/power_supply/AC/online)
-  # Print output
-  [[ $charger_status -eq 1 ]] && { echo 󰚥 : Charging; } || echo 󰚦 : Discharging
-
-# Date
-  # Get value from $date 
-  date_now=$(date)
-  # Print output
-  [[ -n $date_now ]] && { echo  : $date_now; } || echo  : $date_now not found
-
-# Volume 
-  # Get value from amixer
-  vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
-  # Print output
-  [[ -n $vol ]] && { echo 󰕾 : $vol; } || echo 󰕾 : not found
-
-# Network
-  # Get value from nmcli and trim the name
-  # So the first 1-3 sentences are used
-  wifi_stat=$(nmcli connection show --active | awk '/wifi/ {printf "%s %s %s\n", $1, $2, $3}')
-  # Print output
-  [[ -n $wifi_stat ]] && { echo  : $wifi_stat; } ||  echo  : not found!
-
-# Uptime
-  # Get value from $uptime and trim the output 
-  # Until only hours:minutes are displayed
-  time_active=$(uptime | awk -F 'up' '{print $2}' | awk -F ',' '{print $1}' | sed 's/^[ \\t]*//')
-  # Print output
-  [[ -n $time_active ]] && { echo  : $time_active; } || echo  : -
-
-# Sensors
-# Show fan speed
-  # Get value fan from $sensors and trim the output
-  temp_fan=$(sensors | grep -i "fan" | awk '{print $2}')
-  # Print output
-  [[ -n $temp_fan ]] && { echo 󰈐 : $temp_fan RPM; } || echo 󰈐 : -
-# Show temperature
-  # Get value temp from $sensors and trim the output
-  temp_now=$(sensors | grep -i "temp1" | tail -n1 | awk '{print $2}')
-  # Print output
-  [[ -n $temp_now ]] && { echo 󰔄 : $temp_now; } || echo 󰔄 : -
-  ```
+It's universal, I can open [WPS](https://wiki.archlinux.org/title/WPS_Office) on workspace 1 and terminal on workspace 4 (for example), sure. This is as random and free as possible configuration that I have. I previously used [polybar](https://github.com/polybar/polybar) as the bar. However, for several reasons, I want to take advantage of [i3wm scratchpad feature](https://i3wm.org/docs/userguide.html#_scratchpad) to use the bar with the [Bash script I write](.local/bin/stat-bar.sh).
