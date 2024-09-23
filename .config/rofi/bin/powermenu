@@ -1,7 +1,7 @@
-#!/usr/bin/bash
+#!/usr/bin/bash -e
 
 # Default
-DIR="kiss/powermenus"
+DIR="~/.config/rofi/kiss/powermenus"
 
 rofi_command="rofi -theme $HOME/.config/rofi/kiss/powermenu.rasi"
 uptime=$(uptime -p | sed -e 's/up //g')
@@ -16,7 +16,7 @@ if [[ "$DIR" == "powermenus" ]]; then
 	#ddir="$HOME/.config/rofi/$DIR"
 else
 	# Buttons
-	layout=`cat $HOME/.config/rofi/kiss/powermenu.rasi | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
+	layout=`cat ~/.config/rofi/kiss/powermenu.rasi | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
 	if [[ "$layout" == "FALSE" ]]; then
 		shutdown=""
 		reboot=""

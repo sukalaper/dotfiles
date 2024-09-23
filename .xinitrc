@@ -28,8 +28,5 @@
   export CM_LAUNCHER=$HOME/.config/rofi/bin/clipmenu
   export CM_DIR=$HOME/tmp
 
-# Reponsive keyboard on pressed
-  xset r rate 200 50
-
 # Start i3
   exec i3

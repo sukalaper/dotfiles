@@ -1,3 +1,9 @@
 # Used to automate completion and also color on <tab> in Bash
 set colored-completion-prefix on
 set colored-stats on
+
+# Vim motion
+set editing-mode vi
+set show-mode-in-prompt on
+set vi-ins-mode-string "(ins)"
+set vi-cmd-mode-string "(cmd)"

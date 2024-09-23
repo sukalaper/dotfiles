@@ -213,19 +213,19 @@
 ### Notification Format ###
     [urgency_low]
       timeout = 3
-      background = "#100D0C"
-      foreground = "#C4C7C5"
-      frame_color = "#809693"
-      icon = ~/.config/dunst/critical.png
+      background = "#100d0c"
+      foreground = "#d8d9d3"
+      frame_color = "#758C8B"
+      new_icon = ~/.config/dunst/cust-critical.png
     [urgency_normal]
       timeout = 3 
-      background = "#100D0C"
-      foreground = "#C4C7C5"
-      frame_color = "#809693"
-      icon = ~/.config/dunst/normal.png
+      background = "#100d0c"
+      foreground = "#d8d9d3"
+      frame_color = "#758C8B"
+      new_icon = ~/.config/dunst/cust-normal.png
     [urgency_critical]
       timeout = 0
-      background = "#100D0C"
-      foreground = "#C4C7C5"
-      frame_color = "#809693"
-      icon = ~/.config/dunst/critical.png
+      background = "#100d0c"
+      foreground = "#d8d9d3"
+      frame_color = "#758C8B"
+      new_icon = ~/.config/dunst/cust-critical.png

@@ -3,7 +3,7 @@
   set $alt Mod1
 
 ## Set Font ##
-  font pango:Noto Sans 9
+  font pango:FantasqueSansM Nerd Font Mono 10
 
 ## Use Mouse+$super To Drag Floating Windows ##
   floating_modifier $super
@@ -11,8 +11,9 @@
 ## Autostart Program ##
   exec_always --no-startup-id bash ~/.fehbg
   exec_always --no-startup-id dunst
-  exec_always --no-startup-id xrdb ~/.Xresources
   exec_always --no-startup-id clipmenud
+  exec_always --no-startup-id xset r rate 200 50
+  exec_always --no-startup-id xinput set-prop 11 "libinput Accel Speed" -0.66
   #exec_always --no-startup-id xsetroot -bitmap /home/anggiramadyansyah/Pictures/Wallpapers/bw-bgnd/bubbles_orig.xbm -bg "#252a32" -fg "#bab7b5"
   #exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
   #exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -29,7 +30,7 @@
   bindsym $super+Shift+x exec --no-startup-id clipdel -d '.'
   bindsym $super+Shift+f exec firefox 
   bindsym $super+Shift+t exec pcmanfm
-  bindsym $super+Shift+Return exec st
+  bindsym $super+Shift+Return exec st 
   bindsym --release Caps_Lock exec sh ~/.local/bin/capslock.sh
 
 ## Change Volume ##
@@ -98,10 +99,10 @@
   # Resize Window (You Can Also Use The Mouse For That) #
   bindsym $super+r mode "resize"
   mode "resize"{
-    bindsym Left resize shrink width 13 px or 13 ppt
-    bindsym Down resize grow height 13 px or 13 ppt
-    bindsym Up resize shrink height 13 px or 13 ppt
-    bindsym Right resize grow width 13 px or 13 ppt
+    bindsym Left resize shrink width 8 px or 8 ppt
+    bindsym Down resize grow height 8 px or 8 ppt
+    bindsym Up resize shrink height 8 px or 8 ppt
+    bindsym Right resize grow width 8 px or 8 ppt
     bindsym Return mode "default"
   }
 
