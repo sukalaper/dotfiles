@@ -1,3 +1,5 @@
+# i3 config file (v4)
+
 ## Set Modifier ##
   set $super Mod4
   set $alt Mod1
@@ -14,6 +16,7 @@
   exec_always --no-startup-id clipmenud
   exec_always --no-startup-id xset r rate 200 50
   exec_always --no-startup-id xinput set-prop 11 "libinput Accel Speed" -0.66
+  exec_always --no-startup-id xinput disable 10 
   #exec_always --no-startup-id xsetroot -bitmap /home/anggiramadyansyah/Pictures/Wallpapers/bw-bgnd/bubbles_orig.xbm -bg "#252a32" -fg "#bab7b5"
   #exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
   #exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -21,8 +24,8 @@
 ## Rofi, Program Launcher ##
   bindsym $super+a exec ~/.config/rofi/bin/launcher
   bindsym $super+p exec sh ~/.config/rofi/bin/powermenu 
-  bindsym $super+n exec sh ~/.config/rofi/bin/network
-  bindsym $super+Shift+s exec sh ~/.config/rofi/bin/screenshot
+  #bindsym $super+n exec sh ~/.config/rofi/bin/network
+  #bindsym $super+Shift+s exec sh ~/.config/rofi/bin/screenshot
   bindsym Print exec sh ~/.local/bin/awesome-flameshot
 
 ## Applications ##
@@ -31,7 +34,7 @@
   bindsym $super+Shift+f exec firefox 
   bindsym $super+Shift+t exec pcmanfm
   bindsym $super+Shift+Return exec st 
-  bindsym --release Caps_Lock exec sh ~/.local/bin/capslock.sh
+  bindsym --release Caps_Lock exec sh ~/.local/bin/capslock
 
 ## Change Volume ##
   bindsym XF86AudioRaiseVolume exec ~/.local/bin/volume-up

@@ -15,16 +15,19 @@
   
 # Auto completion
   if ! shopt -oq posix; then
-      [ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion || [ -f /etc/bash_completion.d/000_bash_completion_compat.bash ] && . /etc/bash_completion.d/000_bash_completion_compat.bash
+    . /usr/share/bash-completion/bash_completion || 
+    . /etc/bash_completion.d/000_bash_completion_compat.bash
   fi
 
   shopt -s cdspell
 
   bind 'set completion-ignore-case on'
+
+  export BAT_THEME="base16"
  
   function fcd() {
     local result
-    result=$(find . \( -type d -o -type f \) | fzf)
+    result=$(find . \( -type d -o -type f \) | fzf --preview 'bat --color=always {}')
     if [ -n "$result" ]; then
       if [ -d "$result" ]; then
         cd "$result"  
@@ -40,7 +43,7 @@
   export PATH="$HOME/.local/bin:$PATH"
 
 # Some Alias
-  alias ls='exa --icons=always'
+  alias ls='exa --inode --header --icons=always'
   alias pcs='sudo pacman -S'
   alias pcsyu='sudo pacman -Syu'
   alias remove='sudo pacman -Rncs'
@@ -50,5 +53,7 @@
   alias lamppstop='if ! sudo /opt/lampp/lampp status | grep "already running"; then sudo /opt/lampp/lampp stop; fi'
   alias copas='xclip -selection clipboard'
   alias rel='source .bashrc'
-  alias gl='git clone'
+  alias gc='git clone'
   alias c='clear'
+  alias cpcmn='sudo pacman -Scc --noconfirm'
+  alias ..='cd ..'

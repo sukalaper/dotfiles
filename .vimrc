@@ -1,141 +1,112 @@
-" Disable compatibility 
-  set nocompatible
+set nocompatible
 
-" Disable wrap text
-  set wrap
+set wrap
 
-" Copy paste
-  set clipboard=unnamed,unnamedplus
-  nnoremap <C-c> "+y  
-  nnoremap <C-v> "+p
+set clipboard=unnamed,unnamedplus  
 
-" Show syntax
-  syntax enable
+syntax enable
 
-" Show number line
-  set number
+set number
 
-" Search highlighting
-  set incsearch
-  set hlsearch
+set incsearch  
+set hlsearch
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
 
-" Highlight code pair
-  set showmatch
-  
-" Tab settings to 2 space
-  set expandtab
-  set tabstop=2
-  set shiftwidth=2
+set showmatch
 
-" Folding methode
-  set foldmethod=indent
-  set foldmarker={,}
+set expandtab      
+set tabstop=2      
+set shiftwidth=2    
 
-" Enable indent
-  set smartindent
-  set autoindent
+set foldmethod=indent  
+set foldmarker={,},(,)     
 
-" Encoding UTF-8
-  set encoding=UTF-8
+set smartindent  
+set autoindent   
 
-" Set leader
-  let mapleader = " "
+set encoding=UTF-8
 
-" Remove ~ ending file
-  set fillchars+=eob:\ 
+let mapleader = " "  
 
-" Fast to delete
-  set backspace=indent,eol,start
+set fillchars+=eob:\  
 
-" Disable swap file
-  set noswapfile
+set backspace=indent,eol,start  
 
-" Ignore case in search
-  set smartcase
+set noswapfile
 
-" Enable mouse mode 
-  set mouse=a
+set smartcase  
 
-" Modifiable
-  set modifiable
+set mouse=a
 
-" Auto formatting (COC)
-  command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+set modifiable
 
-" Apply change without re-open vim
-  au BufWritePost .vimrc so ~/.vimrc
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument  
 
-" Disable polyglot for markdown
-  let g:polyglot_disabled = ['markdown']
+au BufWritePost .vimrc so ~/.vimrc
 
-" Plugin
-  call plug#begin()
-    Plug 'sainnhe/sonokai' 
-    Plug 'preservim/NERDTree'
-    Plug 'vim-airline/vim-airline'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'Yggdroot/indentLine'
-    Plug 'sheerun/vim-polyglot'
-    Plug 'junegunn/goyo.vim'
-    Plug 'dylanaraps/wal.vim'
-    Plug 'sukalaper/koreksi-bahasa-inggris-pada-markdown-dengan-vim'
-  call plug#end()
+let g:polyglot_disabled = ['markdown']
 
-" Airline extension
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline_powerline_fonts = 1
-  let g:airline_highlighting_cache = 1
-  let airline#extensions#tabline#show_buffers = 0
-  let g:airline#extensions#tabline#show_splits = 0 
-  let g:airline#extensions#tabline#show_tab_type = 0
+call plug#begin()  
+  Plug 'preservim/NERDTree'  
+  Plug 'vim-airline/vim-airline'  
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}  
+  Plug 'vim-airline/vim-airline-themes' 
+  Plug 'ryanoasis/vim-devicons' 
+  Plug 'Yggdroot/indentLine'  
+  Plug 'sheerun/vim-polyglot' 
+  Plug 'junegunn/goyo.vim'  
+  Plug 'dylanaraps/wal.vim'  
+call plug#end()  
 
-" Tab control and navigation
-  nnoremap <Leader>t :tabnew<CR>
-  nnoremap <Leader>c :tabclose<CR>
-  nnoremap <Leader>z :tabprev<CR>
-  nnoremap <Leader>x :tabnext<CR>
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
+call neobundle#end()
+NeoBundleCheck
 
-" Show and hide indentline
-  nnoremap <Leader>d :IndentLinesDisable<CR>
-  nnoremap <Leader>e :IndentLinesEnable<CR>
+let g:airline#extensions#tabline#enabled = 1  
+let g:airline_powerline_fonts = 1  
+let g:airline_highlighting_cache = 1  
+let airline#extensions#tabline#show_buffers = 0  
+let g:airline#extensions#tabline#show_splits = 0  
+let g:airline#extensions#tabline#show_tab_type = 0  
 
-" Indenline settings
-  let g:indentLine_color_term = 2
-  let g:indentLine_char = '|'
-  let g:indentLine_defaultGroup = 'SpecialKey'
-  let g:indentLine_concealcursor = 'inc'
-  let g:indentLine_conceallevel = 2
+nnoremap <Leader>t :tabnew<CR>  
+nnoremap <Leader>c :tabclose<CR>  
+nnoremap <Leader>z :tabprev<CR>  
+nnoremap <Leader>x :tabnext<CR>  
 
-" Folding control
-  nnoremap <silent> zc :normal! zc<CR>
-  nnoremap <silent> zo :normal! zo<CR>
-  nnoremap <silent> zM :normal! zM<CR>
-  nnoremap <silent> zR :normal! zR<CR>
+nnoremap <Leader>d :IndentLinesDisable<CR>  
+nnoremap <Leader>e :IndentLinesEnable<CR>   
 
-" Mapping to format selected code using COC
-  vmap <leader>f <Plug>(coc-format-selected)
-  nmap <leader>f <Plug>(coc-format-selected)
+let g:indentLine_color_term = 2  
+let g:indentLine_char = '|'  
+let g:indentLine_defaultGroup = 'SpecialKey'  
+let g:indentLine_concealcursor = 'inc'  
+let g:indentLine_conceallevel = 2  
 
-" Fix TAB in autocomplete
-  inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nnoremap <silent> zc :normal! zc<CR>  
+nnoremap <silent> zo :normal! zo<CR>  
+nnoremap <silent> zM :normal! zM<CR>  
+nnoremap <silent> zR :normal! zR<CR>  
 
-" Mapping NERDTree
-  nnoremap <leader>n :NERDTreeFocus<CR>
-  nnoremap <C-n> :NERDTree<CR>
-  nnoremap <C-a> :NERDTreeClose<CR>
-  nnoremap <C-f> :NERDTreeFind<CR>
+vmap <leader>f <Plug>(coc-format-selected)  
+nmap <leader>f <Plug>(coc-format-selected)  
 
-" Mapping for control focus window
-  nnoremap <silent> <c-k> :wincmd k<CR>
-  nnoremap <silent> <c-j> :wincmd j<CR>
-  nnoremap <silent> <c-h> :wincmd h<CR>
-  nnoremap <silent> <c-l> :wincmd l<CR>
+nnoremap <leader>n :NERDTreeFocus<CR>  
+nnoremap <C-n> :NERDTree<CR>  
+nnoremap <C-a> :NERDTreeClose<CR>  
+nnoremap <C-f> :NERDTreeFind<CR>  
+let g:NERDTreeLimitedSyntax = 1
 
-" Color definition 
-  colorscheme wal
+nnoremap <silent> <c-k> :wincmd k<CR>  
+nnoremap <silent> <c-j> :wincmd j<CR>  
+nnoremap <silent> <c-h> :wincmd h<CR>  
+nnoremap <silent> <c-l> :wincmd l<CR>  
 
-" Call dictionary
-  source ~/.vim/plugged/koreksi-bahasa-inggris-pada-markdown-dengan-vim/konfigurasi-kamus.vim
+colorscheme wal
+
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"  
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>" 

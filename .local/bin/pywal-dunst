@@ -1,0 +1,19 @@
+#!/bin/bash
+
+wal_colors="/home/nggi/.cache/wal/colors.sh"
+dunstrc="/home/nggi/.config/dunst/dunstrc"
+
+if [ -f "$wal_colors" ]; then
+  bg=$(grep 'background' "$wal_colors" | cut -d'=' -f2 | tr -d ' ' | tr -d "'")
+  fg=$(grep 'foreground' "$wal_colors" | cut -d'=' -f2 | tr -d ' ' | tr -d "'")
+  frame=$(grep '^color2=' "$wal_colors" | cut -d'=' -f2 | tr -d ' ' | tr -d "'")
+
+  sed -i "s/background = .*/background = \"$bg\"/" "$dunstrc"
+  sed -i "s/foreground = .*/foreground = \"$fg\"/" "$dunstrc"
+  sed -i "s/frame_color = .*/frame_color = \"$frame\"/" "$dunstrc"
+
+  pkill dunst
+  sleep 0.5 
+  dunst &
+
+fi

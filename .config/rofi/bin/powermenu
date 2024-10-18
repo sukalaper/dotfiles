@@ -1,4 +1,4 @@
-#!/usr/bin/bash -e
+#!/bin/bash -e
 
 # Default
 DIR="~/.config/rofi/kiss/powermenus"
@@ -8,8 +8,8 @@ uptime=$(uptime -p | sed -e 's/up //g')
 
 # Options
 if [[ "$DIR" == "powermenus" ]]; then
-  shutdown=""
-	reboot=""
+  shutdown=""
+	reboot=""
 	lock=""
 	suspend=""
 	logout=""
@@ -18,8 +18,8 @@ else
 	# Buttons
 	layout=`cat ~/.config/rofi/kiss/powermenu.rasi | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
 	if [[ "$layout" == "FALSE" ]]; then
-		shutdown=""
-		reboot=""
+		shutdown=""
+		reboot=""
 		lock=""
 		suspend=""
 		logout=""
