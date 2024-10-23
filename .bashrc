@@ -4,7 +4,7 @@
   [[ $- != *i* ]] && return
 
 # Nice username
-  PS1='\u@ThinkpadT460P:\w\$ '
+  PS1='\u@ThinkPad:\w\$ '
 
 # Pywal
   cat ~/.cache/wal/sequences >/dev/null
@@ -23,7 +23,7 @@
 
   bind 'set completion-ignore-case on'
 
-  export BAT_THEME="base16"
+  export BAT_THEME="gruvbox-dark"
  
   function fcd() {
     local result
