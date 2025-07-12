@@ -1,0 +1,6 @@
+[Unit]
+Description=Notifikasi charger jika status berubah
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/check-charger
