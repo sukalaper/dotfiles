@@ -1,6 +1,0 @@
-#!/bin/bash
-
-style=$(cat $HOME/.config/dunst/sid)
-
-vol=$(pactl list sinks | grep -E 'Volume:' | head -n 1 | awk '{print ": " $5}')
-[[ -n $vol ]] && { echo $vol; } || echo $vol not found!
