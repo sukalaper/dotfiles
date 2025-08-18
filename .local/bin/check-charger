@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
+
+acpi_listen | while read -r line; do
+  if [[ "$line" == *"ac_adapter"* ]]; then
+    status=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
+    if [[ "$status" == "Charging" ]]; then
+      dunstify -u normal -t 2000 "🔌 Charger terhubung"
+    elif [[ "$status" == "Discharging" ]]; then
+      dunstify -u normal -t 2000 "🔋 Charger dicabut"
+    fi
+  fi
+done
